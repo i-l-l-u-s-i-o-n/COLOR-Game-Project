@@ -10,26 +10,31 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 <body>
+
 <!--We can also use <br> to break the line in h1 but here we used div-->
-<h1>Guess Color<div id="pickedColor">RGB</div>The color Guessing Game</h1>
+<h1><span id="guessColor">Guess Color</span><div id="pickedColor">RGB</div>The color Guessing Game</h1>
 
 <div id="strip">
     <button id="reset">New Colors</button>
     <span id="status"></span>
-    <button class="mode">EASY</button>
-    <button class="mode selected">HARD</button>
+    <button id="easyButton">EASY</button>
+    <button id="hardButton" class="selected">HARD</button>
 </div>
+<audio id="Caudio" src="beep-24.mp3" ></audio>
+<audio id="Waudio" src="button-10.mp3" ></audio>
 <div id="container">
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
+    <div class="square loading" ></div>
+    <div class="square loading" ></div>
+    <div class="square loading" ></div>
+    <div class="square loading" ></div>
+    <div class="square loading" ></div>
+    <div class="square loading" ></div>
 </div>
+
 <div id="footer">
     <p id="content"><span id="desc">For any feedback, mail at - </span> shivam.dev1097@gmail.com</p>
 </div>
+
 <script src="refactoredCode.js"></script>
 </body>
 </html>

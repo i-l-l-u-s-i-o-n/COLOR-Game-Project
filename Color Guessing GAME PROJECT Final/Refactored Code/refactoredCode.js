@@ -63,10 +63,12 @@ function setUpSquares() {
                 h1.style.backgroundColor=clickedColor;
                 //If player wins, change button text to "Play Again?"
                 reset_button.textContent="Play again?"
+                playCorrectaudio();
             }
             else {
                 this.style.backgroundColor="#232323";
                 status_display.textContent="Try again :( ";
+                playWrongaudio();
             }
         });
     }
@@ -130,5 +132,12 @@ function generateColorArray(num) {
 }
 
 
-
+function playCorrectaudio(){
+    var audio = document.getElementById("Caudio");
+    audio.play();
+}
+function playWrongaudio(){
+    var audio = document.getElementById("Waudio");
+    audio.play();
+}
 
