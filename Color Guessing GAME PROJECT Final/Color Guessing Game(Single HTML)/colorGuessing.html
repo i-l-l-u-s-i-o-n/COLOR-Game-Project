@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Guess Color</title>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
     <!--<link rel="stylesheet" href="style.css" type="text/css">-->
@@ -15,6 +15,10 @@
 
 
         /*Created by Shivam on 22-01-2019 .*/
+
+        html{
+            height: 100%;
+        }
 
         body{
             background: #232323;
@@ -30,14 +34,26 @@
             margin: 0;
             line-height: 1.1;
             word-spacing: 4px;
-            padding: 20px 0;
+            padding-bottom: 20px;
 
 
             background-color: #000000;
             background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
+
+            background: url("image.jpg");
+            background: url("http://www.baltana.com/files/wallpapers-13/Dark-Texture-Best-Wallpaper-35580.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-y: 40%;
+
             /*background-color: #2234ae;*/
             /*background-image: linear-gradient(315deg, #2234ae 0%, #191714 74%);*/
 
+        }
+
+        #guessColor{
+            padding-top: 0;
+            margin-top: 10px;
         }
         .square{
             width: 23%;
@@ -125,10 +141,14 @@
             }
         }
         #footer{
-            color: #a29183;
+            color: #fcffea;
             float: left;
-            background-color: #000000;
-            background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
+            background: url("image.jpg");
+            background: url("http://www.baltana.com/files/wallpapers-13/Dark-Texture-Best-Wallpaper-35580.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-y: bottom;
+            font-weight: 500;
             width: 100%;
             height: 100px;
             text-align: center;
@@ -136,9 +156,9 @@
             border-top: 20px solid white;
         }
         #content{
-            padding-top: 30px;
-            word-spacing: 3px;
-            letter-spacing: 2px;
+            padding-top: 26px;
+            word-spacing: 4px;
+            letter-spacing: 3px;
             font-family: "Montserrat", "Microsoft YaHei UI";
         }
         #desc{
@@ -149,14 +169,12 @@
     <!--Using Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-
-
 </head>
 <body>
 
 
 <!--We can also use <br> to break the line in h1 but here we used div-->
-<h1>Guess Color<div id="pickedColor">RGB</div>The color Guessing Game</h1>
+<h1><span id="guessColor">Guess Color</span><div id="pickedColor">RGB</div>The color Guessing Game</h1>
 
 <div id="strip">
     <button id="reset">New Colors</button>
@@ -164,6 +182,8 @@
     <button id="easyButton">EASY</button>
     <button id="hardButton" class="selected">HARD</button>
 </div>
+<audio id="Caudio" src="beep-24.mp3" ></audio>
+<audio id="Waudio" src="button-10.mp3" ></audio>
 <div id="container">
     <div class="square loading" ></div>
     <div class="square loading" ></div>
@@ -184,7 +204,6 @@
     // Created by Shivam on 22-01-2019.
 
 
-
     // By default ,game will be at hard mode. so colors=6 , at easy , colors=3.
     var number_of_colors=6;
     var colors=generateColorArray(number_of_colors);
@@ -203,6 +222,14 @@
     var easy_button=document.getElementById("easyButton");
     var hard_button=document.getElementById("hardButton");
 
+    function playCorrectaudio(){
+        var audio = document.getElementById("Caudio");
+        audio.play();
+    }
+    function playWrongaudio(){
+        var audio = document.getElementById("Waudio");
+        audio.play();
+    }
 
 
 
@@ -222,11 +249,13 @@
                 h1.style.backgroundColor=clickedColor;
                 //If player wins, change button text to "Play Again?"
                 reset_button.textContent="Play again?"
+                playCorrectaudio();
             }
             else
             {
                 this.style.backgroundColor="#232323";
                 status_display.textContent="Try again :( ";
+                playWrongaudio()
             }
         });
     }
